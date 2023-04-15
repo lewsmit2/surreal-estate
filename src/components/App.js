@@ -8,7 +8,9 @@ import Properties from "./Properties";
 function App() {
   return (
     <div>
+      
       <Navbar />
+      <h2>Surreal Estate</h2>
       <Routes>
         <Route path="/" element={<Properties />} />
         <Route path="add-property" element={<AddProperty />} />

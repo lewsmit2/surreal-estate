@@ -1,32 +1,46 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
+import Alert from "./Alert";
 import "../styles/add-property.css";
 
 const AddProperty = () => {
   const initialState = {
     fields: {
       title: "",
-      city: "Manchester",
       type: "",
-      bedroom: "",
-      bathroom: "",
-      email: "",
+      bedrooms: "",
+      bathrooms: "",
       price: "",
+      city: "Manchester",
+      email: "",
+    },
+    alert: {
+      message: "",
+      isSuccess: false,
     },
   };
 
   const [fields, setFields] = useState(initialState.fields);
 
+  const [alert, setAlert] = useState(initialState.alert);
+
   const handleAddProperty = (event) => {
     event.preventDefault();
+    setAlert({ message: "", isSuccess: false });
     axios
-      .post(`/PropertyListing`, {fields})
-      .then((response) => {
-       console.log(response)
+      .post(`http://localhost:3000/api/v1/PropertyListing`, fields)
+      .then(() => {
+       setAlert({
+        message: "Property Added",
+        isSuccess: true,
+       })
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setAlert({
+          message: "Server error. Please try again later",
+          isSuccess: false,
+        }); 
       })
   };
 
@@ -38,6 +52,7 @@ const AddProperty = () => {
     <div className="add-property">
       <h2 style={{ marginBottom: "20px" }}>Add Property Page</h2>
       <form onSubmit={handleAddProperty}>
+        <Alert message={alert.message} success={alert.isSuccess} />
         <div className="form-field">
           <label htmlFor="title">
             Title
@@ -72,22 +87,22 @@ const AddProperty = () => {
           <label htmlFor="bedrooms">
             Bedrooms
             <input
-              id="bedroom"
-              name="bedroom"
+              id="bedrooms"
+              name="bedrooms"
               placeholder="Number of Bedrooms"
-              value={fields.bedroom}
+              value={fields.bedrooms}
               onChange={handleFieldChange}
             ></input>
           </label>
         </div>
         <div className="form-field">
-          <label htmlFor="bathroom">
+          <label htmlFor="bathrooms">
             Bathrooms
             <input
-              id="bathroom"
-              name="bathroom"
+              id="bathrooms"
+              name="bathrooms"
               placeholder="Number of Bathrooms"
-              value={fields.bathroom}
+              value={fields.bathrooms}
               onChange={handleFieldChange}
             ></input>
           </label>
