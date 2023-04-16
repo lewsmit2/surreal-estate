@@ -1,0 +1,51 @@
+.property-card {
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #696969;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+.property-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.property-card__email {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 20em;
+    padding: 10px;
+    border: 1px solid #696969;
+    background-color: #9370DB;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.property-card__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.property-card__bathrooms,
+.property-card__bedrooms,
+.property-card__price,
+.property-card__city,
+.property-card__email {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.property-card__bathrooms svg,
+.property-card__bedrooms svg,
+.property-card__price svg,
+.property-card__city svg,
+.property-card__email svg {
+    margin-right: 5px;
+}

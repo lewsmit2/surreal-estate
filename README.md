@@ -17,7 +17,6 @@
 
 ### Packages used
 
-
 ### Running the App
 
 To run this app on your machine, you will need to:

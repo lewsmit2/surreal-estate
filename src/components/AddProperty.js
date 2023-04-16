@@ -31,17 +31,17 @@ const AddProperty = () => {
     axios
       .post(`http://localhost:3000/api/v1/PropertyListing`, fields)
       .then(() => {
-       setAlert({
-        message: "Property Added",
-        isSuccess: true,
-       })
+        setAlert({
+          message: "Property Added",
+          isSuccess: true,
+        });
       })
       .catch(() => {
         setAlert({
           message: "Server error. Please try again later",
           isSuccess: false,
-        }); 
-      })
+        });
+      });
   };
 
   const handleFieldChange = (event) => {
@@ -67,7 +67,7 @@ const AddProperty = () => {
         <div className="form-field">
           <label htmlFor="type">
             Type
-          <select
+            <select
               id="type"
               name="type"
               value={fields.type}

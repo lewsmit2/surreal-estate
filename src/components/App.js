@@ -8,7 +8,6 @@ import Properties from "./Properties";
 function App() {
   return (
     <div>
-      
       <Navbar />
       <h2>Surreal Estate</h2>
       <Routes>
