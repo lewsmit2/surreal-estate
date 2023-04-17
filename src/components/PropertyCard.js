@@ -6,6 +6,7 @@ import "../styles/propertycard.css";
 const PropertyCard = ({ props }) => {
     const { bathrooms, bedrooms, city, email, title, type, price } = props;
     return (
+        <div className="properties">
         <div className="property-card">
             <div className="property-card__title">
                 {title}
@@ -33,6 +34,7 @@ const PropertyCard = ({ props }) => {
             <FontAwesomeIcon icon={faEnvelope} />
                 {email}
             </div>
+         </div>
          </div>
   )
 }
