@@ -22,13 +22,6 @@ const Properties = () => {
     });
   }, []);
 
-  const { search } = useLocation();
-  useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/propertyListing${search}`)
-      .then(({ data }) => setProperties(data))
-      .catch(err => console.error(err));
-  }, [search]);
-
   const propertyCardMap = properties.map((property) => (
     <div key={property.id} className="item">
     <PropertyCard key={property._id} props={property} />
