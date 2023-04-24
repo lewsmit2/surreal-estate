@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBath, faBed, faTag, faLocationDot, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import "../styles/propertycard.css";
 
-const PropertyCard = ({ props }) => {
+const PropertyCard = ( props ) => {
     const { bathrooms, bedrooms, city, email, title, type, price } = props;
     return (
         <div className="properties">

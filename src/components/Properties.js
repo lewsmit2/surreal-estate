@@ -24,7 +24,7 @@ const Properties = () => {
 
   const propertyCardMap = properties.map((property) => (
     <div key={property.id} className="item">
-    <PropertyCard key={property._id} props={property} />
+    <PropertyCard key={property._id} {...property} />
     </div>
   ));
 

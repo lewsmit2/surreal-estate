@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FacebookLogin from "react-facebook-login";
 import "../styles/navbar.css";
 import logo from "../assets/surreal-logo.png";
 
-const Navbar = () => {
+const Navbar = ({onLogin, onLogout, userId}) => {
+  const handleLogout = () => {
+    window.FB.logout(() => {
+      onLogout();
+    });
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -20,6 +27,33 @@ const Navbar = () => {
             Add a Property
           </Link>
         </li>
+        { userId ? (
+          <li className="navbar-links-list-item">
+            <button className="button" type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </li>
+        ) : (
+        <li className="navbar-links-list-item">
+          <FacebookLogin
+            appId="737898181346973"
+            autoLoad={true}
+            fields="name,email,picture"
+            callback={onLogin}
+            render={(renderProps) => (
+              <button
+              className="button"
+              type="button"
+              onClick={renderProps.onClick}
+              >
+                Login
+              </button>
+            )}
+            onLogin={onLogin}
+        
+          />
+        </li>
+        )}
       </ul>
     </nav>
   );
