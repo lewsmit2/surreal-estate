@@ -8,12 +8,11 @@
 }
 
 .navbar-logo {
-  width: 50%;
-  margin-right: 50%;
+  width: auto
 }
 
 .logo-image {
-  width: 50%;
+  width: 25%;
 }
 
 .navbar-links {

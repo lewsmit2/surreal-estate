@@ -22,6 +22,11 @@ const Navbar = ({onLogin, onLogout, userID}) => {
             Add a Property
           </Link>
         </li>
+        <li className="navbar-links-list-item">
+          <Link className="item" to="favourite">
+            Favourite Properties
+          </Link>
+        </li>
         { userID ? (
           <li className="navbar-links-list-item">
             <button className="item" type="submit" onClick={onLogout}>

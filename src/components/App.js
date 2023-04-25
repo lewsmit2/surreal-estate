@@ -4,6 +4,7 @@ import "../styles/app.css";
 import AddProperty from "./AddProperty";
 import Navbar from "./Navbar";
 import Properties from "./Properties";
+import Favourites from "./Favourites"
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Properties userID={userID} />} />
         <Route path="add-property" element={<AddProperty />} />
+        <Route path="favourite" element={<Favourites userID={userID} />} />
       </Routes>
     </div>
   );
