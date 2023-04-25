@@ -6,12 +6,20 @@ import Alert from "./Alert";
 import Sidebar from "./Sidebar";
 import "../styles/properties.css";
 
-const Properties = () => {
+const Properties = ({userID}) => {
 
   const [properties, setProperties] = useState([]);
 
   // eslint-disable-next-line no-unused-vars
   const [alert, setAlert] = useState({message: ""});
+  const { search } = useLocation();
+
+  const handleSaveProperty = (propertyId) => {
+    axios.post('http://localhost:3000/api/v1/Favourite', {
+      propertyListing: propertyId,
+      fbUserId: userID,
+    })
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/PropertyListing`)
@@ -24,11 +32,11 @@ const Properties = () => {
 
   const propertyCardMap = properties.map((property) => (
     <div key={property.id} className="item">
-    <PropertyCard key={property._id} {...property} />
+    <PropertyCard key={property._id} {...property} userID={userID} onSaveProperty={handleSaveProperty} />
     </div>
   ));
 
-  const { search } = useLocation();
+
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/PropertyListing${search}`)
     .then(({data}) => setProperties(data))

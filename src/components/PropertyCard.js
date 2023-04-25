@@ -4,7 +4,7 @@ import { faBath, faBed, faTag, faLocationDot, faEnvelope } from "@fortawesome/fr
 import "../styles/propertycard.css";
 
 const PropertyCard = ( props ) => {
-    const { bathrooms, bedrooms, city, email, title, type, price } = props;
+    const { _id, bathrooms, bedrooms, city, email, title, type, price, userID, onSaveProperty } = props;
     return (
         <div className="properties">
         <div className="property-card">
@@ -33,6 +33,17 @@ const PropertyCard = ( props ) => {
             <div className="property-card__email">
             <FontAwesomeIcon icon={faEnvelope} />
                 {email}
+            </div>
+            <div className="property-card__save">
+            {userID && (
+                <button
+                    type="button"
+                    onClick={() => onSaveProperty(_id)}
+                    className="save"
+                    >
+                    <i className="fas fa-star" />Save
+                </button>
+            )}
             </div>
          </div>
          </div>

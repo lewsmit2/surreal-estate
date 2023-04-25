@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "../styles/app.css";
 import AddProperty from "./AddProperty";
@@ -7,22 +7,30 @@ import Properties from "./Properties";
 
 function App() {
 
-  const [ userId, setUserId ] = useState("");
+  const [ userID, setUserID ] = useState("");
+  let accessToken = "";
 
-  const handleLogin = (userId) => {
-    setUserId(userId);
-  }
+  const handleLogin = (response) => {
+    console.log(response);
+    setUserID(response.userID);
+    accessToken = response.accessToken;
+    }
+
+  useEffect(() => {console.log(userID)}, [userID]);
 
   const handleLogout = () => {
-    window.fdescribe.logout(() => setUserId(""));
+    console.log(userID);
+    window.FB.logout(() => {
+      setUserID("")
+    }, { access_token: accessToken });
   }
 
   return (
     <div>
-      <Navbar onLogin={handleLogin} onLogout={handleLogout} userId={userId}/>
+      <Navbar onLogin={handleLogin} onLogout={handleLogout} userID={userID}/>
       <h2>Surreal Estate</h2>
       <Routes>
-        <Route path="/" element={<Properties />} />
+        <Route path="/" element={<Properties userID={userID} />} />
         <Route path="add-property" element={<AddProperty />} />
       </Routes>
     </div>
